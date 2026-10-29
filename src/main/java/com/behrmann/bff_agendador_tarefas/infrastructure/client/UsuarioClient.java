@@ -1,4 +1,4 @@
-package com.behrmann.bff_agendador_tarefas.infrastructure.client.client;
+package com.behrmann.bff_agendador_tarefas.infrastructure.client;
 
 import com.behrmann.bff_agendador_tarefas.business.dto.in.EnderecoDTORequest;
 import com.behrmann.bff_agendador_tarefas.business.dto.in.LoginDTORequest;

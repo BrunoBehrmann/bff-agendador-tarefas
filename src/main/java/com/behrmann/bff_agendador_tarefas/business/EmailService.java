@@ -1,7 +1,7 @@
 package com.behrmann.bff_agendador_tarefas.business;
 
 import com.behrmann.bff_agendador_tarefas.business.dto.out.TarefasDTOResponse;
-import com.behrmann.bff_agendador_tarefas.infrastructure.client.client.EmailClient;
+import com.behrmann.bff_agendador_tarefas.infrastructure.client.EmailClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

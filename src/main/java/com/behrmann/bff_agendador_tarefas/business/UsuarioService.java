@@ -7,8 +7,8 @@ import com.behrmann.bff_agendador_tarefas.business.dto.in.UsuarioDTORequest;
 import com.behrmann.bff_agendador_tarefas.business.dto.out.EnderecoDTOResponse;
 import com.behrmann.bff_agendador_tarefas.business.dto.out.TelefoneDTOResponse;
 import com.behrmann.bff_agendador_tarefas.business.dto.out.UsuarioDTOResponse;
-import com.behrmann.bff_agendador_tarefas.infrastructure.client.client.UsuarioClient;
 
+import com.behrmann.bff_agendador_tarefas.infrastructure.client.UsuarioClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

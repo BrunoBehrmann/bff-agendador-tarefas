@@ -3,8 +3,8 @@ package com.behrmann.bff_agendador_tarefas.controller;
 import com.behrmann.bff_agendador_tarefas.business.TarefasService;
 import com.behrmann.bff_agendador_tarefas.business.dto.in.TarefasDTORequest;
 import com.behrmann.bff_agendador_tarefas.business.dto.out.TarefasDTOResponse;
-import com.behrmann.bff_agendador_tarefas.infrastructure.client.enums.StatusNotificacaoEnum;
-import com.behrmann.bff_agendador_tarefas.infrastructure.client.security.SecurityConfig;
+import com.behrmann.bff_agendador_tarefas.infrastructure.enums.StatusNotificacaoEnum;
+import com.behrmann.bff_agendador_tarefas.infrastructure.security.SecurityConfig;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -27,9 +27,10 @@ public class TarefasController {
     private final TarefasService tarefasService;
 
     @PostMapping
-    @Operation(summary = "Salvar Tarefas de Usuárop", description = "Cria uma nova tarefa")
+    @Operation(summary = "Salvar Tarefas de Usuáro", description = "Cria uma nova tarefa")
     @ApiResponse(responseCode = "200", description = "Tarefa salva com sucesso")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "401", description = "Usuário não encontrado")
     public ResponseEntity<TarefasDTOResponse> gravarTarefas(@RequestBody TarefasDTORequest tarefasDTO,
                                                             @RequestHeader(name = "Authorization", required = false) String token) {
         return ResponseEntity.ok(tarefasService.gravarTarefa(token, tarefasDTO));
@@ -39,6 +40,7 @@ public class TarefasController {
     @Operation(summary = "Busca Tarefas por Período", description = "Busca tarefas cadastradas por período")
     @ApiResponse(responseCode = "200", description = "Tarefas encontradas")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "401", description = "Usuário não encontrado")
     public ResponseEntity<List<TarefasDTOResponse>> buscaListaDeTarefasPorPeriodo(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicial,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataFinal,
@@ -50,6 +52,8 @@ public class TarefasController {
     @Operation(summary = "Busca lista de Tarefas por Email de Usuário", description = "Busca tarefas cadastradas por usuário")
     @ApiResponse(responseCode = "200", description = "Tarefas encontradas")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "403", description = "Email não encontrado")
+    @ApiResponse(responseCode = "401", description = "Usuário não encontrado")
     public ResponseEntity<List<TarefasDTOResponse>> buscaTarefasPorEmail(@RequestHeader(name = "Authorization", required = false) String token) {
         return ResponseEntity.ok(tarefasService.buscaTarefasPorEmail(token));
     }
@@ -58,6 +62,8 @@ public class TarefasController {
     @Operation(summary = "Deleta Tarefas por Id", description = "Deleta tarefas cadastradas por Id")
     @ApiResponse(responseCode = "200", description = "Tarefas deletadas")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "403", description = "Tarefa id não encontrada")
+    @ApiResponse(responseCode = "401", description = "Usuário não encontrado")
     public ResponseEntity<Void> deletaTarefaPorId(@RequestParam("id") String id,
                                                   @RequestHeader(name = "Authorization", required = false) String token) {
 
@@ -70,6 +76,8 @@ public class TarefasController {
     @Operation(summary = "Altera Status de Tarefas", description = "Altera status das tarefas cadastradas")
     @ApiResponse(responseCode = "200", description = "Status da tarefa alterado")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "403", description = "Tarefa id não encontrada")
+    @ApiResponse(responseCode = "401", description = "Usuário não encontrado")
     public ResponseEntity<TarefasDTOResponse> alteraStatusNotificacao(
             @RequestParam("status") StatusNotificacaoEnum statusNotificacaoEnum,
             @RequestParam("id") String id,
@@ -82,6 +90,8 @@ public class TarefasController {
     @Operation(summary = "Altera dados de Tarefas", description = "Altera dados das tarefas cadastradas")
     @ApiResponse(responseCode = "200", description = "Tarefas alteradas")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    @ApiResponse(responseCode = "403", description = "Tarefa id não encontrada")
+    @ApiResponse(responseCode = "401", description = "Usuário não encontrado")
     public ResponseEntity<TarefasDTOResponse> updateTarefas(@RequestBody TarefasDTORequest tarefasDTO,
                                                             @RequestParam String id,
                                                             @RequestHeader(name = "Authorization", required = false) String token){

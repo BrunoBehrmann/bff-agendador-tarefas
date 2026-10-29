@@ -1,8 +1,8 @@
-package com.behrmann.bff_agendador_tarefas.infrastructure.client.client;
+package com.behrmann.bff_agendador_tarefas.infrastructure.client;
 
 import com.behrmann.bff_agendador_tarefas.business.dto.in.TarefasDTORequest;
 import com.behrmann.bff_agendador_tarefas.business.dto.out.TarefasDTOResponse;
-import com.behrmann.bff_agendador_tarefas.infrastructure.client.enums.StatusNotificacaoEnum;
+import com.behrmann.bff_agendador_tarefas.infrastructure.enums.StatusNotificacaoEnum;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;

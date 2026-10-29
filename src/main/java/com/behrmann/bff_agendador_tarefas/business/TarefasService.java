@@ -2,8 +2,8 @@ package com.behrmann.bff_agendador_tarefas.business;
 
 import com.behrmann.bff_agendador_tarefas.business.dto.in.TarefasDTORequest;
 import com.behrmann.bff_agendador_tarefas.business.dto.out.TarefasDTOResponse;
-import com.behrmann.bff_agendador_tarefas.infrastructure.client.client.TarefasClient;
-import com.behrmann.bff_agendador_tarefas.infrastructure.client.enums.StatusNotificacaoEnum;
+import com.behrmann.bff_agendador_tarefas.infrastructure.client.TarefasClient;
+import com.behrmann.bff_agendador_tarefas.infrastructure.enums.StatusNotificacaoEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
